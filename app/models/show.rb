@@ -3,23 +3,23 @@ class Show < ActiveRecord::Base
     Show.maximum(:rating)
   end
 
-  def most_popular_show
+  def self.most_popular_show
     Show.find_by(rating: highest_rating)
   end
 
-  def lowest_rating
+  def self.lowest_rating
     Show.minimum(:rating)
   end
 
-  def least_popular_show
+  def self.least_popular_show
     Show.find_by(rating: lowest_rating)
   end
 
-  def ratings_sum
+  def self.ratings_sum
     Show.sum(:rating)
   end
 
-  def popular_shows
+  def self.popular_shows
     Show.where("rating > ?", 5)
   end
 end
